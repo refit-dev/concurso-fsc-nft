@@ -15,11 +15,11 @@ export const createCheckout = async () => {
   }
 
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-    apiVersion: "2025-02-24.acacia",
+    apiVersion: "2026-09-30.endive",
   });
 
   const session = await stripe.checkout.sessions.create({
-    payment_method_types: ["card"],
+    allowed_payment_method_types: ["card"],
     mode: "subscription",
     success_url: process.env.NEXT_PUBLIC_APP_URL,
     cancel_url: process.env.NEXT_PUBLIC_APP_URL,
